@@ -1,6 +1,6 @@
 #!/usr/bin/python3.7
 
-import os
+import pathlib
 
 
 """
@@ -10,32 +10,33 @@ import os
 """
 
 # Main folder naming provided.
-directory = [
-    "01_Central_Model",
-    "02_Apartment_Comp",
-    "03_Podium_Comp",
-    "04_Site_Facilities_Comp",
-    "05_Basement_Comp",
-    "06_Component",
-    "Pdf",
-    "Dwg"
-]
+directory = {
+    "00_Design_Stage": {"Typical Floor": None,
+                        "Typical Unit": None},
+    "01_Central_Model": {"sample.rvt": None},
+    "02_Apartment_Comp": {"Typical Floor": None,
+                          "Typical Unit": None},
+    "03_Podium_Comp": {"sample.rvt": None},
+    "04_Site_Facilities_Comp": {"GuardHouse": None,
+                                "SalesGallery": None,
+                                "ShopLot": None},
+    "05_Basement_Comp": {"sample.rvt": None},
+    "06_Component": {"sample.rvt": None},
+    "Pdf": {"sample.pdf": None},
+    "Dwg": {"sample.dwg": None}
+}
 
-# Sub-folder certain folder.
-sub_folder = [
-    "sample.rvt",
-    "Typical Floor",
-    "Typical Unit"
-]
 
-# Additional for sub-folder.
-extra_folder = []
+def create_folders(root_path, folders):
+    for folder, subfolders in folders.items():
+        (root_path / folder).mkdir(parents=True, exist_ok=True)
+        if subfolders is not None:
+            create_folders(root_path / folder, subfolders)
 
 
 # Request path input from user.
-path = input("Please insert the path: \n")
+root = input("Please key in the file path: \n")
+root_path = pathlib.Path(root)
+create_folders(root_path, directory)
 
-for f in directory:
-    join = os.path.join(f, path)
-    os.mkdir(join)
-    print("Folder is created!")
+print("Folder is created!")
