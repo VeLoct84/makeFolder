@@ -13,6 +13,8 @@ mainFolder = {
     "Dwg",
 }
 
+"""
+# will add the sub folder after settle the function
 subFolder = {
     {"Typical Floor": None, "Typical Unit": None},
     {"sample.rvt": None},
@@ -24,3 +26,4 @@ subFolder = {
     {"sample.pdf": None},
     {"sample.dwg": None},
 }
+"""
