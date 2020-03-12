@@ -1,6 +1,5 @@
 #!/usr/bin/python3.7
 
-
 main_folder = {
     "00_Design_Stage": {"Typical Floor": None,
                         "Typical Unit": None},
